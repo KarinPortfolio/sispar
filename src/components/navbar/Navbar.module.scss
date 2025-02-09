@@ -1,0 +1,38 @@
+nav {
+  display: flex;
+  width: 9.1vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+button {
+  height: 48px;
+  width: 48px;
+  margin-top: 0.8rem;
+  border-radius: 6px;
+  background-color: #0844c4;
+  color: #fff;
+  border: none;
+}
+button:hover {
+  background-color: #073db0;
+}
+.btnperfil {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  background-color: #ffffff;
+}
+.btnperfil:hover {
+  background-color: #63758c;
+}
+
+.btnSair {
+  margin-bottom: 1rem;
+  background-color: #63758c;
+}
+
+.btnSair:hover {
+  background-color: #5b6b7f;
+}
