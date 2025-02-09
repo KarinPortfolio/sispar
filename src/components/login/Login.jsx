@@ -4,11 +4,9 @@ import styles from "./Login.module.scss"; //importando o componente de estiliza√
 
 function Login() {
   return (
-    <main>
-      <section className={styles.ContainerLogin}>
-        <img src={Capa} alt="foto de um navio cargueiro" />
-      </section>
-      <section>
+    <main className={styles.ContainerLogin}>
+      <img src={Capa} alt="foto de um navio cargueiro" />
+      <section className={styles.Login}>
         <img src={Logo} alt="Logo da Wilson Sons" />
         <h1>Boas vindas ao Novo Portal SISPAR</h1>
         <p>Sistema de emiss√£o de boletos e Parcelamento</p>
@@ -25,10 +23,10 @@ function Login() {
             id="password"
             placeholder="Senha"
           ></input>
-          <p>Esqueci minha senha</p>
+          <a href="#">Esqueci minha senha</a>
           <div>
-            <button>Entrar</button>
-            <button>Criar conta</button>
+            <button className={styles.btnEntrar}>Entrar</button>
+            <button className={styles.btnCriar}>Criar conta</button>
           </div>
         </form>
       </section>
