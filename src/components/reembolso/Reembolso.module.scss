@@ -3,3 +3,87 @@
   display: flex;
   flex-direction: row;
 }
+
+.reembolso {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90vw;
+
+  h1 {
+    margin-left: 1rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #23282f;
+    text-align: left;
+  }
+
+  p {
+    margin-left: 1rem;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #23282f;
+  }
+}
+
+.cards {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.status {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+  width: 70%;
+  border-radius: 6px;
+  border: 1px solid #23282f;
+  height: 100px;
+}
+
+.btnsolicitados,
+.btnaprovados,
+.btnrejeitados,
+.btnemanalise {
+  width: 36px;
+  height: 36px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  img {
+    width: 50%; // A imagem ocupa todo o botão
+    height: 50%;
+  }
+}
+
+.btnsolicitados {
+  background-color: #00bedd;
+}
+
+.btnaprovados {
+  background-color: #e56700;
+}
+
+.btnrejeitados {
+  background-color: #007a6a;
+}
+
+.btnemanalise {
+  background-color: #a60b2f;
+}
+
+.status span {
+  margin: 0 0.5rem;
+  font-weight: 700;
+}
+
+.status p {
+  margin: 0;
+}

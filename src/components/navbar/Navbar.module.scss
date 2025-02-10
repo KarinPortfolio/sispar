@@ -20,12 +20,26 @@ button:hover {
   background-color: #073db0;
 }
 .btnperfil {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.btnperfil:hover {
   background-color: #ffffff;
 }
-.btnperfil:hover {
-  background-color: #63758c;
+.btnperfil:hover::after {
+  content: "Comércio Exterior";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  color: #23282f;
+  padding: 0;
+  text-align: center;
+  font-size: 1em;
 }
 
 .btnSair {
