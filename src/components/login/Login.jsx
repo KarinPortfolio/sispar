@@ -29,7 +29,9 @@ function Login() {
             <Link to="/reembolso">
               <button className={styles.btnEntrar}>Entrar</button>
             </Link>
-            <button className={styles.btnCriar}>Criar conta</button>
+            <Link to="/">
+              <button className={styles.btnCriar}>Criar conta</button>
+            </Link>
           </div>
         </form>
       </section>

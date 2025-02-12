@@ -1,46 +1,53 @@
 import styles from "./Reembolso.module.scss";
 import Navbar from "../navbar/Navbar.jsx";
-import Card from "../Card/Card.jsx";
 import reembolso from "../../assets/Dashboard/Reembolso.png";
 import analise from "../../assets/Dashboard/Analises.png";
 import historico from "../../assets/Dashboard/Historico.png";
+import { Link } from "react-router-dom";
 import solicitados from "../../assets/Dashboard/N-Solicitados.png";
 import aprovados from "../../assets/Dashboard/N-Aprovados.png";
 import rejeitados from "../../assets/Dashboard/N-Rejeitados.png";
 import emanalise from "../../assets/Dashboard/N-Analises.png";
+import home from "../../assets/Header/home-header.png";
+import vector from "../../assets/Header/Vector.png";
 
 function Reembolso() {
   return (
-    <main className={styles.container}>
+    <div>
       <Navbar />
-      <section className={styles.reembolso}>
-        <h1>Sistema de Reembolso</h1>
-        <p>
-          Solicite novos pedidos de reembolso, visualize solicitações em análise
-          e todo o histórico.
-        </p>
-        <article className={styles.cards}>
-          {" "}
-          {/* Adicione a classe cards aqui */}
-          <Card
-            imagem={reembolso}
-            descricaoAlt="icone de solicitar reembolso"
-            titulo="Solicitar Reembolso"
-          />
-          <Card
-            imagem={analise}
-            descricaoAlt="icone de analise"
-            titulo="Verificar Análises"
-          />
-          <Card
-            imagem={historico}
-            descricaoAlt="icone de historico"
-            titulo="Histórico"
-          />
-        </article>
-        <article className={styles.status}>
-          {" "}
-          {/* Nova classe para os status */}
+      <header>
+        <img src={home} alt="Casinha do header" />
+        <img src={vector} alt="Setinha do header" />
+        <p>Reembolso</p>
+      </header>
+
+      <main>
+        <section className={styles.container}>
+          <div className={styles.letreiro}>
+            <h1>Sistema de Reembolso</h1>
+            <p>
+              Solicite novos pedidos de reembolso, visualize solicitações em
+              análise e todo o histórico.
+            </p>
+          </div>
+          <div className={styles.letreiro2}>
+            <article className={styles.cards}>
+              <Link to="/solicitacoes">
+                <img src={reembolso} />
+              </Link>
+              <p>Solicitação de reembolso</p>
+            </article>
+            <article className={styles.cards}>
+              <img src={analise} />
+              <p> Em análise</p>
+            </article>
+            <article className={styles.cards}>
+              <img src={historico} />
+              <p>Histórico</p>
+            </article>
+          </div>
+        </section>
+        <section className={styles.status}>
           <button className={styles.btnsolicitados}>
             <img src={solicitados} alt="Solicitados" />{" "}
             {/* Use <img> corretamente */}
@@ -62,9 +69,9 @@ function Reembolso() {
           </button>
           <span>41</span>
           <p>Em Análise</p>
-        </article>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   );
 }
 
