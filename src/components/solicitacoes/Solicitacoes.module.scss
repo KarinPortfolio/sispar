@@ -1,9 +1,67 @@
-.container {
+.bordaExterna {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
   display: flex;
   align-items: center;
-  width: 70%;
-  font-size: 0.8rem;
-  border: solid red;
-  color: yellow;
-  white-space: nowrap;
+  padding: 1rem;
+  width: 27%; //
+  box-sizing: border-box;
+
+  img {
+    margin-right: 0.5rem;
+  }
+
+  p {
+    color: #23282f;
+    font-size: 1rem;
+    font-style: normal;
+    margin: 0;
+  }
+}
+
+main {
+  margin-top: 1rem;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.blocoFormulario {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formulario1 {
+  border: solid blue;
+  width: 50%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.formulario2 {
+  border: solid pink;
+  width: 50%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.quadro {
+  border: solid black;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-top: 1rem;
 }
