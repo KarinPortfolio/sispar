@@ -10,67 +10,79 @@ import rejeitados from "../../assets/Dashboard/N-Rejeitados.png";
 import emanalise from "../../assets/Dashboard/N-Analises.png";
 import home from "../../assets/Header/home-header.png";
 import vector from "../../assets/Header/Vector.png";
+import atualizado from "../../assets/Dashboard/atualizado.png";
 
 function Reembolso() {
   return (
     <div>
       <Navbar />
-      <header>
-        <img src={home} alt="Casinha do header" />
-        <img src={vector} alt="Setinha do header" />
-        <p>Reembolso</p>
-      </header>
-
-      <main>
-        <section className={styles.container}>
-          <div className={styles.letreiro}>
-            <h1>Sistema de Reembolso</h1>
+      <div className={styles.Envolve}>
+        <header>
+          <img src={home} alt="Casa" />
+          <img src={vector} alt="Seta" />
+          <p>Reembolso</p>
+        </header>
+        <main className={styles.bordaExterna}>
+          <section className={styles.containerCentral}>
+            <h2>Sistema de Reembolso</h2>
             <p>
               Solicite novos pedidos de reembolso, visualize solicitações em
               análise e todo o histórico.
             </p>
-          </div>
-          <div className={styles.letreiro2}>
-            <article className={styles.cards}>
-              <Link to="/solicitacoes">
-                <img src={reembolso} />
-              </Link>
-              <p>Solicitação de reembolso</p>
-            </article>
-            <article className={styles.cards}>
-              <img src={analise} />
-              <p> Em análise</p>
-            </article>
-            <article className={styles.cards}>
-              <img src={historico} />
-              <p>Histórico</p>
-            </article>
-          </div>
-        </section>
-        <section className={styles.status}>
-          <button className={styles.btnsolicitados}>
-            <img src={solicitados} alt="Solicitados" />{" "}
-            {/* Use <img> corretamente */}
-          </button>
-          <span>182</span>
-          <p>Solicitados</p>
-          <button className={styles.btnaprovados}>
-            <img src={aprovados} alt="Aprovados" />
-          </button>
-          <span>74</span>
-          <p>Aprovados</p>
-          <button className={styles.btnrejeitados}>
-            <img src={rejeitados} alt="Rejeitados" />
-          </button>
-          <span>195</span>
-          <p>Rejeitados</p>
-          <button className={styles.btnemanalise}>
-            <img src={emanalise} alt="Em Análise" />
-          </button>
-          <span>41</span>
-          <p>Em Análise</p>
-        </section>
-      </main>
+            <div className={styles.containerCards}>
+              <article className={styles.cards}>
+                <Link to="/solicitacoes">
+                  <img src={reembolso} />
+                </Link>
+                <p>Solicitação de reembolso</p>
+              </article>
+              <article className={styles.cards}>
+                <img src={analise} />
+                <p> Em análise</p>
+              </article>
+              <article className={styles.cards}>
+                <img src={historico} />
+                <p>Histórico</p>
+              </article>
+            </div>
+          </section>
+          <section className={styles.containerStatus}>
+            <img
+              src={solicitados}
+              alt="Solicitados"
+              className={styles.btnsolicitados}
+            />
+            <h4>182</h4>
+            <p>Solicitados</p>
+
+            <img
+              src={aprovados}
+              alt="Aprovados"
+              className={styles.btnaprovados}
+            />
+            <h4>74</h4>
+            <p>Aprovados</p>
+
+            <img
+              src={rejeitados}
+              alt="Rejeitados"
+              className={styles.btnrejeitados}
+            />
+            <h4>195</h4>
+            <p>Rejeitados</p>
+            <img
+              src={emanalise}
+              alt="Em Análise"
+              className={styles.btnemanalise}
+            />
+            <h4>41</h4>
+            <p>Em Análise</p>
+          </section>
+          <section className={styles.containerSalvo}>
+            <img src={atualizado} /> <a href="#">Sistema atualizado</a>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }

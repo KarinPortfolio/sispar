@@ -1,47 +1,47 @@
+.Envolve {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
 header {
   display: flex;
-  justify-content: space-between;
+  height: 5vh;
   align-items: center;
-  height: 3%;
-  width: 7vw;
   p {
     color: #23282f;
     font-size: 1rem;
-    font-style: normal;
+  }
+  img {
+    width: auto;
+    height: 3vh;
   }
 }
-main {
-  margin-top: 1vh;
-  width: 70%;
+.bordaExterna {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
 }
-
-.container {
+.containerCentral {
   display: flex;
   flex-direction: column;
-  width: 100%;
-}
+  width: 90%;
 
-.letreiro {
-  height: 15vh;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  h1 {
-    font-size: 1.6rem;
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
   }
   p {
-    margin-left: 1rem;
+    font-weight: 400;
   }
 }
 
-.letreiro2 {
+.contanierCards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 100%;
 }
 
 .cards {
@@ -69,32 +69,25 @@ main {
   border: 0.8px solid #001a3d;
   box-shadow: 0 0 0 0.3rem #cbd4c1;
 }
-.status {
-  padding: 5px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 2rem;
-  width: 90%;
-  border-radius: 6px;
-  border: 1px solid #23282f;
-  height: 100px;
-}
 
+.containerStatus {
+  display: flex;
+  width: 70vw;
+  height: 10vh;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  border: 0.8px solid #23282f;
+  padding: 1rem;
+}
 .btnsolicitados,
 .btnaprovados,
 .btnrejeitados,
 .btnemanalise {
-  width: 36px;
-  height: 36px;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-  cursor: pointer;
-
-  img {
-    width: 50%;
-    height: 50%;
+  padding: 15px;
+  border-radius: 6px;
+  p {
+    font-size: 0.6rem;
   }
 }
 
@@ -114,10 +107,7 @@ main {
   background-color: #a60b2f;
 }
 
-.status span {
-  font-weight: 700;
-}
-
-.status p {
-  margin: 0;
+.containerSalvo {
+  margin-top: 2vh;
+  width: 70vw;
 }

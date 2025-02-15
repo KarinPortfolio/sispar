@@ -1,67 +1,111 @@
-.bordaExterna {
+.Envolve {
   display: flex;
   flex-direction: column;
+  width: 90vw;
 }
 
 header {
   display: flex;
-  align-items: center;
-  padding: 1rem;
-  width: 27%; //
-  box-sizing: border-box;
-
-  img {
-    margin-right: 0.5rem;
-  }
-
+  height: 5vh;
   p {
     color: #23282f;
     font-size: 1rem;
     font-style: normal;
-    margin: 0;
   }
 }
 
-main {
-  margin-top: 1rem;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+.containerMain {
   display: flex;
+  margin-top: 2vh;
+  width: 90vw;
+  justify-content: center;
   flex-direction: column;
-  box-sizing: border-box;
-  padding: 1rem;
+  align-items: center;
 }
 
-.blocoFormulario {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+.containerFormulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "esq dir"
+    "esqInf dirInf";
+  gap: 0.6vw;
+}
+
+.containerEsq {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "item1 item2 item3"
+    "myArea myArea myArea";
+  gap: 1vh;
+}
+#item4 {
+  grid-area: myArea;
+}
+.containerDir {
+  grid-area: dir;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-area: "item5 item6 item7";
+  gap: 1vh;
+}
+
+.containerDirInf {
+  grid-area: dirInf;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-area: "item8 item9 item10 item11 item12 item13 item14 item15";
+  gap: 1vh;
+}
+
+.containerEsq > div,
+.containerDir > div {
+  color: #000;
+  text-align: center;
+}
+.containerDirInf > div {
+  width: 3.5rem;
+}
+
+.caixa {
+  text-align: center;
+  flex-direction: column;
+  font-size: 0.8em;
+}
+//* tabela
+
+.informacao {
+  flex-direction: column;
+  border-radius: 6px;
+  margin-top: 2vh;
   width: 100%;
-  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
 
-.formulario1 {
-  border: solid blue;
-  width: 50%;
-  height: auto;
-  box-sizing: border-box;
-  padding: 1rem;
+.icone {
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
-.formulario2 {
-  border: solid pink;
-  width: 50%;
-  height: auto;
-  box-sizing: border-box;
-  padding: 1rem;
+table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  width: 100%; /* Largura total da tabela */
 }
 
-.quadro {
-  border: solid black;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 1rem;
-  overflow-x: auto;
-  margin-top: 1rem;
+th {
+  background-color: #f1f1f1;
+  padding: 10px; /* Ajustado o padding */
+  text-align: left; /* Alinhar o texto à esquerda por padrão */
+}
+
+td {
+  border: 1px solid #23282f;
+  padding: 5px; /* Ajustado o padding */
+  text-align: left;
+  word-break: keep-all;
 }
