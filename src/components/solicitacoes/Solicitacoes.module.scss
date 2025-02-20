@@ -25,12 +25,13 @@ header {
 
 .containerFormulario {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr 1f;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
-    "esq dir"
-    "esqInf dirInf";
-  gap: 0.6vw;
+    "esq m dir"
+    "esqInf m dirInf";
+  gap: 0.4vw;
+  font-weight: 700;
 }
 
 .containerEsq {
@@ -45,20 +46,27 @@ header {
 #item4 {
   grid-area: myArea;
 }
+
+.containerMeio {
+  height: 20vh;
+  width: 0.1em;
+  background-color: silver;
+}
+
 .containerDir {
-  grid-area: dir;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-area: "item5 item6 item7";
   gap: 1vh;
+  height: 10vh;
 }
 
 .containerDirInf {
   grid-area: dirInf;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-area: "item8 item9 item10 item11 item12 item13 item14 item15";
-  gap: 1vh;
+  height: 10vh;
+  grid-template-columns: repeat(10, 1fr);
+  grid-area: "item8 item9 item10 item11 item12 item13 item14 item15 item 16 item17";
 }
 
 .containerEsq > div,
@@ -75,9 +83,51 @@ header {
   flex-direction: column;
   font-size: 0.8em;
 }
+
+.btnform {
+  padding-left: 6vw;
+  display: flex;
+  align-items: center;
+  gap: 0.2vw;
+}
+
+.btnform1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  width: 4vw;
+  height: 6vh;
+  background-color: #23282f;
+  color: white;
+  cursor: pointer;
+}
+
+.btnform2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  width: 2.2vw;
+  height: 6vh;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 2vh;
+  background-color: #0844c4;
+}
+
+.btn {
+  height: 3vh;
+}
 //* tabela
 
 .informacao {
+  padding-top: 10vh;
   flex-direction: column;
   border-radius: 6px;
   margin-top: 2vh;
@@ -106,6 +156,46 @@ th {
 td {
   border: 1px solid #23282f;
   padding: 5px; /* Ajustado o padding */
-  text-align: left;
+  text-align: center;
   word-break: keep-all;
+}
+
+.containerRodape {
+  padding-top: 10vh;
+  padding-left: 25vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-area: "item18 item19 item20 item21";
+  gap: 1vh;
+}
+.btnform3 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  width: 15vw;
+  height: 5vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #23282f;
+}
+
+.btnform4 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  width: 15vw;
+  height: 5vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #a60b2f;
 }

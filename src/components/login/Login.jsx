@@ -1,7 +1,7 @@
 import Capa from "../../assets/Tela Login/tela-login.png";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Tela Login/logo-ws.png";
-import styles from "./Login.module.scss"; //importando o componente de estilização do login
+import styles from "./Login.module.scss";
 
 function Login() {
   return (
