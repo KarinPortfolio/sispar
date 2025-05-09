@@ -1,7 +1,7 @@
 import Capa from "../../assets/Tela Login/tela-login.png";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Tela Login/logo-ws.png";
-import styles from "./Login.module.scss"; // Adjust the path if necessary
+import styles from "./Login.module.scss";
 import api from "../../Services/Api.jsx";
 import { useState } from "react";
 

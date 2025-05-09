@@ -2,8 +2,48 @@ import styles from "./Cadastro.module.scss";
 import Navbar from "../navbar/Navbar.jsx";
 import home from "../../assets/Header/Home.png";
 import vector from "../../assets/Header/Vector.png";
+import { useNavigate } from "react-router-dom";
+import api from "../../Services/Api.jsx";
+import { useState } from "react";
 
 function Cadastro() {
+  const navigate = useNavigate();
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [salario, setSalario] = useState("");
+
+  const cancelarSolicitacao = () => {
+    setNome("");
+    setEmail("");
+    setSenha("");
+    setCargo("");
+    setSalario("");
+  };
+
+  const fazerCadastro = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.post("colaborador/cadastrar", {
+        nome: nome,
+        email: email,
+        senha: senha,
+        cargo: cargo,
+        salario: salario,
+      });
+      console.log(response.data);
+      irParaLogin();
+    } catch (error) {
+      console.error("Erro ao fazer cadastro:", error);
+      alert("Erro ao fazer cadastro. Verifique os dados.");
+    }
+  };
+
+  const irParaLogin = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <Navbar />
@@ -14,17 +54,18 @@ function Cadastro() {
       </header>
       <div className={styles.informacao}>
         <h1 className={styles.titulo}>Cadastro</h1>
-        <form className="form" action="#" method="post">
+        <form className="form" onSubmit={fazerCadastro} method="post">
+          {" "}
           <label htmlFor="nome" className="form_label">
             Nome
           </label>
           <input
             type="text"
             name="nome"
-            className="form_input"
             id="nome"
             placeholder="Nome"
-            required
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
           />
           <label htmlFor="email" className="form_label">
             Email
@@ -32,10 +73,10 @@ function Cadastro() {
           <input
             type="email"
             name="email"
-            className="form_input"
             id="email"
             placeholder="seuemail@email.com"
-            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <label htmlFor="senha" className="form_label">
             Senha
@@ -43,10 +84,10 @@ function Cadastro() {
           <input
             type="password"
             name="senha"
-            className="form_input"
             id="senha"
             placeholder="Senha"
-            required
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
           />
           <label htmlFor="cargo" className="form_label">
             Cargo
@@ -54,25 +95,36 @@ function Cadastro() {
           <input
             type="text"
             name="cargo"
-            className="form_input"
             id="cargo"
             placeholder="cargo"
-            required
+            value={cargo}
+            onChange={(e) => setCargo(e.target.value)}
           />
           <label htmlFor="salario" className="form_label">
-            Nome
+            Salário
           </label>
           <input
             type="number"
             name="salario"
-            className="form_input"
             id="salario"
             placeholder="salario"
-            required
+            value={salario}
+            onChange={(e) => setSalario(e.target.value)}
           />
+          <button
+            className={`${styles.botao} ${styles.btnCriar}`}
+            type="submit"
+          >
+            Cadastrar
+          </button>{" "}
+          <button
+            className={`${styles.botao} ${styles.deletar}`}
+            type="button"
+            onClick={cancelarSolicitacao}
+          >
+            Cancelar
+          </button>
         </form>
-        <button className={styles.botao}>Cadastrar</button>
-        <button className={styles.botao}>Cancelar</button>
       </div>
     </div>
   );
