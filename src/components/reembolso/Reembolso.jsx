@@ -31,17 +31,21 @@ function Reembolso() {
             </p>
             <div className={styles.containerCards}>
               <article className={styles.cards}>
-                <Link to="/solicitacoes">
+                <Link to="/solicitacao">
                   <img src={reembolso} />
                 </Link>
                 <p>Solicitação de reembolso</p>
               </article>
               <article className={styles.cards}>
-                <img src={analise} />
+                <Link to="/analise">
+                  <img src={analise} />
+                </Link>
                 <p> Em análise</p>
               </article>
               <article className={styles.cards}>
-                <img src={historico} />
+                <Link to="/historico">
+                  <img src={historico} />
+                </Link>
                 <p>Histórico</p>
               </article>
             </div>

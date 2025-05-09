@@ -1,0 +1,183 @@
+html,
+body {
+  height: 100%; /* Garante que html e body ocupem toda a altura da viewport */
+  margin: 0; /* Remove margens padrão */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+.Envolve {
+  width: 90vw;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  height: 5vh;
+  align-items: center;
+  padding-left: 2vw;
+  p {
+    color: #23282f;
+    font-size: 0.8rem;
+  }
+}
+
+main {
+  flex-grow: 1; /* Faz o main ocupar todo o espaço vertical disponível */
+  overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo exceder a altura */
+  padding: 10px;
+}
+.formulario {
+  padding-left: 32vw;
+  flex-direction: row;
+  width: 25vw;
+}
+.containerEsq {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "item1 item2 item3"
+    "myArea myArea myArea";
+  gap: 1vh;
+  padding-top: 2vh;
+  padding-left: 7vw;
+  width: 60vw;
+}
+.containerMeio {
+  padding-left: 0.2vw;
+  height: 25vh;
+  width: 1vw;
+  background-color: silver;
+}
+.containerBox {
+  flex-direction: column;
+}
+.containerDir {
+  padding-left: 1vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-area: "item5 item6 item7";
+  gap: 1vh;
+  height: 10vh;
+  width: 40vw;
+}
+.containerDirInf {
+  padding-left: 1vw;
+  grid-area: dirInf;
+  display: grid;
+  height: 10vh;
+  width: 25vw;
+  grid-template-columns: repeat(10, 1fr);
+  grid-area: "item8 item9 item10 item11 item12 item13 item14 item15 item 16 item17";
+}
+
+.informacao {
+  padding-left: 0vw;
+  height: 10vh;
+  padding-bottom: 10vh;
+}
+
+.caixa {
+  text-align: center;
+  flex-direction: column;
+  font-size: 0.8em;
+  width: 9vw;
+  height: 7vh;
+}
+.caixa1 {
+  text-align: center;
+  flex-direction: column;
+  width: 5vw;
+  font-size: 0.8em;
+  height: 7vh;
+  gap: 0.5em;
+}
+.quadrado {
+  text-align: center;
+  width: 7vw;
+  height: 7vw;
+}
+.buttonAnalise {
+  background-color: #093187;
+  width: 9vw;
+  justify-content: center;
+  cursor: pointer;
+}
+.buttonCancelar {
+  background-color: brown;
+  width: 9vw;
+  justify-content: center;
+  cursor: pointer;
+}
+textarea {
+  width: 25vw;
+  height: 20vh;
+}
+.btnform {
+  padding-left: 5vw;
+  display: flex;
+  align-items: center;
+}
+
+.btnform1 {
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  width: 4vw;
+  height: 6vh;
+  background-color: #23282f;
+  color: white;
+  cursor: pointer;
+}
+
+.btn {
+  height: 3vh;
+}
+.informacao {
+  padding-top: 10vh;
+  flex-direction: column;
+  border-radius: 6px;
+  margin-top: 2vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.icone {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+th {
+  background-color: #f1f1f1;
+  text-align: left;
+}
+
+td {
+  border: 0.8px solid #23282f;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.fatura {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10vw;
+}
+.containerRodape {
+  padding-left: 5vw;
+  padding-bottom: 20px;
+  width: 100%;
+  justify-content: space-between;
+}

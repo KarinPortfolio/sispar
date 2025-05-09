@@ -1,9 +1,36 @@
 import Capa from "../../assets/Tela Login/tela-login.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Tela Login/logo-ws.png";
-import styles from "./Login.module.scss";
+import styles from "./Login.module.scss"; // Adjust the path if necessary
+import api from "../../Services/Api.jsx";
+import { useState } from "react";
 
 function Login() {
+  const navigate = useNavigate();
+  const irParaReembolso = () => {
+    navigate("/reembolso");
+  };
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  const fazerLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.post("/colaborador/login", {
+        email: email,
+        senha: senha,
+      });
+      console.log(response.data);
+      irParaReembolso();
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("Erro ao fazer login. Verifique suas credenciais.");
+    }
+  };
+  const irParaCadastro = () => {
+    navigate("/cadastro");
+  };
+
   return (
     <main className={styles.ContainerLogin}>
       <img src={Capa} alt="foto de um navio cargueiro" />
@@ -17,21 +44,26 @@ function Login() {
             name="email"
             id="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           ></input>
           <input
             type="password"
             name="password"
             id="password"
             placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
           ></input>
           <a href="#">Esqueci minha senha</a>
           <div>
-            <Link to="/reembolso">
-              <button className={styles.btnEntrar}>Entrar</button>
-            </Link>
-            <Link to="/">
-              <button className={styles.btnCriar}>Criar conta</button>
-            </Link>
+            <button className={styles.btnEntrar} onClick={fazerLogin}>
+              Entrar
+            </button>
+
+            <button className={styles.btnCriar} onClick={irParaCadastro}>
+              Criar conta
+            </button>
           </div>
         </form>
       </section>

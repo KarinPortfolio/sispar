@@ -6,9 +6,23 @@ import perfil from "../../assets/Header/Perfil.png";
 import pesquisa from "../../assets/Header/Pesquisa.png";
 import historico from "../../assets/Header/Historico.png";
 import sair from "../../assets/Header/Sair.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const irParaHome = () => {
+    navigate("/");
+  };
+  const irParaReembolso = () => {
+    navigate("/reembolso");
+  };
+  const irParaSolicitacao = () => {
+    navigate("/solicitacao");
+  };
+  const irParaHistorico = () => {
+    navigate("/historico");
+  };
+
   return (
     <nav>
       <button>
@@ -20,31 +34,23 @@ function Navbar() {
       </button>
 
       <button>
-        <Link to="/">
-          <img src={home} alt="Home" />
-        </Link>
+        <img src={home} alt="Home" onClick={irParaHome} />
       </button>
 
       <button>
-        <Link to="/reembolso">
-          <img src={reembolso} alt="Reembolso" />
-        </Link>
+        <img src={reembolso} alt="Solicitacao" onClick={irParaSolicitacao} />
       </button>
 
       <button>
-        <Link to="/solicitacoes">
-          <img src={pesquisa} alt="Pesquisa" />
-        </Link>
+        <img src={pesquisa} alt="Pesquisa" onClick={irParaReembolso} />
       </button>
 
       <button>
-        <img src={historico} alt="Histórico" />
+        <img src={historico} alt="Histórico" onClick={irParaHistorico} />
       </button>
 
       <button className={styles.btnSair}>
-        <Link to="/">
-          <img src={sair} alt="Sair" />
-        </Link>
+        <img src={sair} alt="Sair" onClick={irParaHome} />
       </button>
     </nav>
   );
