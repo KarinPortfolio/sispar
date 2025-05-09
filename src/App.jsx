@@ -4,7 +4,7 @@ import Reembolso from "./components/reembolso/Reembolso.jsx";
 import Solicitacao from "./components/solicitacao/Solicitacao.jsx";
 import Analise from "./components/analise/Analise.jsx";
 import Historico from "./components/historico/Historico.jsx";
-import Cadastro from "./components/cadastro/cadastro.jsx";
+import Cadastro from "./components/cadastro/Cadastro.jsx";
 import Modal from "./components/modal/Modal.jsx";
 import "./global.scss";
 
