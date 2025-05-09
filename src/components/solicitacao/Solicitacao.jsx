@@ -62,10 +62,6 @@ function Solicitacoes() {
     limparCampos(); //quando clicar em salvar, ativa a função de limpar os campos
   };
 
-  //--------------------FUNÇÃO PARA ENVIAR OS DADOS PARA O BD -----------
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NDM5ODU5NiwianRpIjoiOTdkNWI0YmUtOTU3My00ZmEzLTlkY2ItMjE2MGY3MmRiZmUzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDQzOTg1OTYsImNzcmYiOiIwNGViOTcwNy05NDFjLTQwYWItOTJiZS04ZjU0MTliNGFmOTQiLCJleHAiOjE3NDQzOTk0OTZ9.R87xKzHSVishWF8ZNjWnRnhfoEmS0GXx4sN2y6TUR70";
-
   const handleDelete = (index) => {
     setDadosReembolso(dadosReembolso.filter((item, i) => i !== index));
   };
@@ -90,13 +86,26 @@ function Solicitacoes() {
 
   const [foiEnviado, setFoiEnviado] = useState(false);
 
-  const enviarParaAnalise = async () => {
+  const enviarParaAnalise = async (e) => {
+    e.preventDefault();
     try {
-      const response = await Api.post("/refunds/new", dadosReembolso, {
-        headers: {
-          authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+      const response = await Api.post("/solicitacao", dadosReembolso, {
+        colaborador: "",
+        empresa: "",
+        num_prestacao: "",
+        descricao: "",
+        data: "",
+        tipo_reembolso: "",
+        centro_custo: "",
+        ordem_interna: "",
+        divisao: "",
+        pep: "",
+        moeda: "",
+        distancia_km: "",
+        valor_km: "",
+        valor_faturado: "",
+        despesa: "",
+        status: "Em analise",
       });
       console.log("Resposta da API", response);
       alert("Solicitação enviada com sucesso!");
