@@ -85,34 +85,16 @@ function Solicitacoes() {
   };
 
   const [foiEnviado, setFoiEnviado] = useState(false);
-
   const enviarParaAnalise = async (e) => {
     e.preventDefault();
     try {
-      const response = await Api.post("/solicitacao", dadosReembolso, {
-        colaborador: "",
-        empresa: "",
-        num_prestacao: "",
-        descricao: "",
-        data: "",
-        tipo_reembolso: "",
-        centro_custo: "",
-        ordem_interna: "",
-        divisao: "",
-        pep: "",
-        moeda: "",
-        distancia_km: "",
-        valor_km: "",
-        valor_faturado: "",
-        despesa: "",
-        status: "Em analise",
-      });
+      const response = await Api.post("/reembolso/solicitacao", dadosReembolso);
       console.log("Resposta da API", response);
       alert("Solicitação enviada com sucesso!");
-
       setEnviado(true);
     } catch (error) {
       console.error("Erro ao enviar:", error);
+      alert("Erro ao enviar a solicitação.");
     }
   };
 
