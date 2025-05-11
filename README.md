@@ -8,7 +8,7 @@ Este é o projeto final do curso de fullstack da Escola Vai na Web. Consiste num
 
 ## Funcionalidades do sistema:
 
-- **Registro de transações**: inserção de dados como número da prescrição, data, valores, descrição e categoria.
+- **Registro de transações**: inserção de dados como número do processo, data, valores, descrição e categoria.
 - **Categorização**: classificação de despesas em categorias como alimentação, transporte, lazer, etc.
 
 ## Tecnologias utilizadas no back-end:
@@ -18,7 +18,7 @@ Este é o projeto final do curso de fullstack da Escola Vai na Web. Consiste num
 
 ## Objetivo da API:
 
-- Controle de emissão de reembolso.
+- Sistema de emissão de reembolso.
 
 # 2. EndPoints da API:
 
