@@ -4,7 +4,7 @@
 
 ## Descrição geral do projeto
 
-Este é o projeto final do curso de fullstack da Escola Vai na Web. Consiste num sistema de gerenciamento de reembolsos e tem como objetivo ser uma ferramenta de emissão de reembolsos. O usuário pode registrar e alterar informações referentes a reembolsos e categorizá-las a fim de acompanhar sua aprovação.
+Este é o projeto final do curso de fullstack da Escola Vai na Web. Consiste num sistema de gerenciamento de reembolsos e tem como objetivo ser uma ferramenta de emissão de reembolsos. O usuário pode registrar e alterar informações referentes a reembolsos e submetê-los para sua aprovação.
 
 ## Funcionalidades do sistema:
 
