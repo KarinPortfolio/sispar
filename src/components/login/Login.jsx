@@ -7,8 +7,8 @@ import { useState } from "react";
 
 function Login() {
   const navigate = useNavigate();
-  const irParaReembolso = () => {
-    navigate("/reembolso");
+  const irParaCadastro = () => {
+    navigate("/cadastro");
   };
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -21,14 +21,13 @@ function Login() {
         senha: senha,
       });
       console.log(response.data);
-      irParaReembolso();
+
+      localStorage.setItem("id_colaborador", response.data.id_colaborador);
+      navigate("/reembolso");
     } catch (error) {
       console.error("Erro ao fazer login:", error);
       alert("Erro ao fazer login. Verifique suas credenciais.");
     }
-  };
-  const irParaCadastro = () => {
-    navigate("/cadastro");
   };
 
   return (

@@ -1,10 +1,10 @@
 import styles from "./Cadastro.module.scss";
-import Navbar from "../navbar/Navbar.jsx";
-import home from "../../assets/Header/Home.png";
-import vector from "../../assets/Header/Vector.png";
 import { useNavigate } from "react-router-dom";
 import api from "../../Services/Api.jsx";
 import { useState } from "react";
+// Assuming 'home' and 'vector' are imported or defined elsewhere
+// import home from "../../assets/home.png";
+// import vector from "../../assets/vector.svg";
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ function Cadastro() {
   const [salario, setSalario] = useState("");
 
   const cancelarSolicitacao = () => {
+    navigate("/");
     setNome("");
     setEmail("");
     setSenha("");
@@ -33,26 +34,16 @@ function Cadastro() {
         salario: salario,
       });
       console.log(response.data);
-      irParaLogin();
+      navigate("/"); // Redirect to login after successful registration
     } catch (error) {
       console.error("Erro ao fazer cadastro:", error);
       alert("Erro ao fazer cadastro. Verifique os dados.");
     }
   };
 
-  const irParaLogin = () => {
-    navigate("/");
-  };
-
   return (
     <div>
-      <Navbar />
-      <header>
-        <img src={home} alt="Casa" />
-        <img src={vector} alt="Seta" />
-        <p>Cadastro</p>
-      </header>
-      <div className={styles.informacao}>
+      <div className={styles.cadastro}>
         <h1 className={styles.titulo}>Cadastro</h1>
         <form className="form" onSubmit={fazerCadastro} method="post">
           {" "}
@@ -118,7 +109,7 @@ function Cadastro() {
             Cadastrar
           </button>{" "}
           <button
-            className={`${styles.botao} ${styles.deletar}`}
+            className={`${styles.botao} ${styles.btnCancelar}`}
             type="button"
             onClick={cancelarSolicitacao}
           >
