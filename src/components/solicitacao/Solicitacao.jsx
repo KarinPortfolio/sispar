@@ -14,81 +14,67 @@ import Api from "../../Services/Api.jsx";
 function Solicitacoes() {
   const [colaborador, setColaborador] = useState(""); // Estado para o campo colaborador
   const [empresa, setEmpresa] = useState(""); // Estado para o campo empresa
-  const [nPrestacao, setnPrestacao] = useState(""); // Estado para o campo número de prestação
+  const [num_prestacao, setNum_prestacao] = useState(""); // Estado para o campo número de prestação
   const [descricao, setDescricao] = useState(""); // Estado para o campo  descrição
   const [data, setData] = useState(""); // Estado para o campo data
-  const [tipoReembolso, setTipoReembolso] = useState(""); // Estado para o campo tipo de reembolso
-  const [centroCusto, setCentroCusto] = useState(""); // Estado para o campo centro de custo
-  const [ordemInterna, setorOrdemInterna] = useState(""); // Estado para o campo ordem interna
+  const [tipo_reembolso, setTipo_reembolso] = useState(""); // Estado para o campo tipo de reembolso
+  const [centro_custo, setCentro_custo] = useState(""); // Estado para o campo centro de custo
+  const [ordem_interna, setOrdem_interna] = useState(""); // Estado para o campo ordem interna
   const [divisao, setDivisao] = useState(""); // Estado para o campo divisão
   const [pep, setPep] = useState(""); // Estado para o campo pep
   const [moeda, setMoeda] = useState(""); // Estado para o campo moeda
-  const [distanciaKm, setDistanciaKm] = useState(""); // Estado para o campo distância km
-  const [valorKm, setValorKm] = useState(""); // Estado para o campo valor km
-  const [valorFaturado, setValorFaturado] = useState(""); // Estado para o campo valor faturado
+  const [distancia_km, setDistancia_km] = useState(""); // Estado para o campo distância km
+  const [valor_km, setValor_km] = useState(""); // Estado para o campo valor km
+  const [valor_faturado, setValor_faturado] = useState(""); // Estado para o campo valor faturado
   const [despesa, setDespesa] = useState(""); // Estado para o campo despesa
-  const [dadosReembolso, setDadosReembolso] = useState([]);
+  const [dados_reembolso, setDados_reembolso] = useState([]);
 
   const [enviado, setEnviado] = useState(false);
 
   useEffect(() => {
     if (enviado) {
-      setDadosReembolso([]); // Limpa os dados após o envio
-      setEnviado(false); // Reseta o estado de controle
+      setDados_reembolso([]);
+      setEnviado(false);
     }
   }, [enviado]);
 
   const handleSubmit = () => {
+    const idColaborador = localStorage.getItem("id_colaborador");
+
     const objetoReembolso = {
       empresa,
       colaborador,
-      nPrestacao,
+      num_prestacao,
       descricao,
       data,
-      tipoReembolso,
-      ordemInterna,
-      centroCusto,
+      tipo_reembolso,
+      ordem_interna,
+      centro_custo,
       divisao,
       pep,
       moeda,
-      distanciaKm,
-      valorKm,
-      valorFaturado,
+      distancia_km,
+      valor_km,
+      valor_faturado,
       despesa,
+      id_colaborador: idColaborador,
     };
 
-    setDadosReembolso(dadosReembolso.concat(objetoReembolso));
-
-    limparCampos(); //quando clicar em salvar, ativa a função de limpar os campos
+    setDados_reembolso(dados_reembolso.concat(objetoReembolso));
+    limparCampos();
   };
 
-  const handleDelete = (index) => {
-    setDadosReembolso(dadosReembolso.filter((item, i) => i !== index));
-  };
-
-  const limparCampos = () => {
-    setColaborador(""),
-      setEmpresa(""),
-      setnPrestacao(""),
-      setDescricao(""),
-      setData(""),
-      setTipoReembolso(""),
-      setCentroCusto(""),
-      setorOrdemInterna(""),
-      setDivisao(""),
-      setPep(""),
-      setMoeda(""),
-      setDistanciaKm(""),
-      setValorKm(""),
-      setValorFaturado(""),
-      setDespesa("");
-  };
-
-  const [foiEnviado, setFoiEnviado] = useState(false);
   const enviarParaAnalise = async (e) => {
     e.preventDefault();
+    const idColaborador = localStorage.getItem("id_colaborador");
     try {
-      const response = await Api.post("/reembolso/solicitacao", dadosReembolso);
+      const response = await Api.post(
+        "/reembolso/solicitacao",
+        dados_reembolso.map((item) => ({
+          ...item,
+          id_colaborador: idColaborador,
+        }))
+      );
       console.log("Resposta da API", response);
       alert("Solicitação enviada com sucesso!");
       setEnviado(true);
@@ -98,15 +84,30 @@ function Solicitacoes() {
     }
   };
 
-  useEffect(() => {
-    if (foiEnviado) {
-      setDadosReembolso([]);
-      setFoiEnviado(false);
-    }
-  }, [foiEnviado]);
+  const handleDelete = (index) => {
+    setDados_reembolso(dados_reembolso.filter((_, i) => i !== index));
+  };
+
+  const limparCampos = () => {
+    setColaborador("");
+    setEmpresa("");
+    setNum_prestacao("");
+    setDescricao("");
+    setData("");
+    setTipo_reembolso("");
+    setCentro_custo("");
+    setOrdem_interna("");
+    setDivisao("");
+    setPep("");
+    setMoeda("");
+    setDistancia_km("");
+    setValor_km("");
+    setValor_faturado("");
+    setDespesa("");
+  };
 
   const cancelarSolicitacao = () => {
-    setDadosReembolso([]);
+    setDados_reembolso([]);
     limparCampos();
   };
 
@@ -128,51 +129,55 @@ function Solicitacoes() {
               className={styles.formulario}
             >
               {/* esquerda */}
-              <article className={styles.containerEsq}>
-                <div id={styles.item1} className={styles.caixa}>
-                  <label htmlFor="nome">Nome Completo</label>
-                  <input
-                    value={colaborador}
-                    name="colaborador"
-                    onChange={(e) => setColaborador(e.target.value)}
-                    type="text"
-                  />
-                </div>
-                <div id={styles.item2} className={styles.caixa}>
-                  <label htmlFor="empresa">Empresa</label>
-                  <input
-                    name="empresa"
-                    value={empresa}
-                    onChange={(e) => setEmpresa(e.target.value)}
-                    type="text"
-                  />
-                </div>
-                <div id={styles.item3} className={styles.caixa}>
-                  <label htmlFor="N.prestacao">N° prestacao contas</label>
-                  <input
-                    value={nPrestacao}
-                    onChange={(e) => setnPrestacao(e.target.value)}
-                    type="number"
-                    name="nPrestacao"
-                  />
-                </div>
+              <div className={styles.containerBox}>
+                <article className={styles.containerEsq}>
+                  <div id={styles.item1} className={styles.campo}>
+                    <label htmlFor="nome">Nome Completo</label>
+                    <input
+                      value={colaborador}
+                      name="colaborador"
+                      onChange={(e) => setColaborador(e.target.value)}
+                      type="text"
+                    />
+                  </div>
+                  <div id={styles.item2} className={styles.campo}>
+                    <label htmlFor="empresa">Empresa</label>
+                    <input
+                      name="empresa"
+                      value={empresa}
+                      onChange={(e) => setEmpresa(e.target.value)}
+                      type="text"
+                    />
+                  </div>
+                  <div id={styles.item3} className={styles.cxprestacao}>
+                    <label htmlFor="N.prestacao">N° prest.</label>
+                    <input
+                      value={num_prestacao}
+                      onChange={(e) => setNum_prestacao(e.target.value)}
+                      type="number"
+                      name="num_prestacao"
+                    />
+                  </div>
+                </article>
+                <article className={styles.containerEsq}>
+                  <div id={styles.item4} className={styles.textcaixa}>
+                    <label htmlFor="Descricao motivo do reembolso">
+                      Descrição / motivo do reembolso
+                    </label>
+                    <textarea
+                      name="descricao"
+                      value={descricao}
+                      onChange={(e) => setDescricao(e.target.value)}
+                    />
+                  </div>
+                </article>
+              </div>
 
-                <div id={styles.item4} className={styles.caixa}>
-                  <label htmlFor="Descricao motivo do reembolso">
-                    Descricao / motivo do reembolso
-                  </label>
-                  <textarea
-                    name="descricao"
-                    value={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
-                  />
-                </div>
-              </article>
               <article className={styles.containerMeio}></article>
               {/* direita */}
               <div className={styles.containerBox}>
                 <article className={styles.containerDir}>
-                  <div id={styles.item5} className={styles.caixa}>
+                  <div id={styles.item5} className={styles.cxdata}>
                     <label htmlFor="data">Data</label>
                     <input
                       value={data}
@@ -182,13 +187,13 @@ function Solicitacoes() {
                     />
                   </div>
 
-                  <div id={styles.item6} className={styles.caixa}>
-                    <label htmlFor="tipoReembolso">Tipo de Reembolso</label>
+                  <div id={styles.item6} className={styles.campo}>
+                    <label htmlFor="tipo_reembolso">Tipo Reembolso</label>
                     <select
-                      value={tipoReembolso}
-                      name="tipoReembolso"
-                      onChange={(e) => setTipoReembolso(e.target.value)}
-                      id="tipoReembolso"
+                      value={tipo_reembolso}
+                      name="tipo_reembolso"
+                      onChange={(e) => setTipo_reembolso(e.target.value)}
+                      id="tipo_reembolso"
                     >
                       <option value="selecionar">Selecionar</option>
                       <option value="alimentacao">Alimentação</option>
@@ -204,13 +209,13 @@ function Solicitacoes() {
                       </option>
                     </select>
                   </div>
-                  <div id={styles.item7} className={styles.caixa}>
-                    <label htmlFor="centroCusto">Centro de Custo</label>
+                  <div id={styles.item7} className={styles.campo}>
+                    <label htmlFor="centro_custo">Centro de Custo</label>
                     <select
-                      value={centroCusto}
-                      onChange={(e) => setCentroCusto(e.target.value)}
-                      name="centroCusto"
-                      id="centroCusto"
+                      value={centro_custo}
+                      onChange={(e) => setCentro_custo(e.target.value)}
+                      name="centro_custo"
+                      id="centro_custo"
                     >
                       <option value="selecionar">Selecionar</option>
                       <option value="1100109002_interno">
@@ -229,10 +234,10 @@ function Solicitacoes() {
                   <div id={styles.item8} className={styles.caixa1}>
                     <label htmlFor="ord_int">Ord.Int.</label>
                     <input
-                      value={ordemInterna}
-                      name="ordemInterna"
-                      onChange={(e) => setorOrdemInterna(e.target.value)}
-                      id="ordemInterna"
+                      value={ordem_interna}
+                      name="ordem_interna"
+                      onChange={(e) => setOrdem_interna(e.target.value)}
+                      id="ordem_interna"
                       type="number"
                     />
                   </div>
@@ -243,7 +248,7 @@ function Solicitacoes() {
                       value={pep}
                       onChange={(e) => setPep(e.target.value)}
                       name="pep"
-                      id="PEP"
+                      id="pep"
                       type="number"
                     />
                   </div>
@@ -259,19 +264,20 @@ function Solicitacoes() {
                     />
                   </div>
                   <div id={styles.item11} className={styles.caixa1}>
-                    <label htmlFor="distanciaKm">Dist./Km</label>
+                    <label htmlFor="distancia_km">Dist./Km</label>
                     <input
-                      value={distanciaKm}
-                      onChange={(e) => setDistanciaKm(e.target.value)}
-                      name="distanciaKm"
-                      id="distanciaKm"
+                      value={distancia_km}
+                      onChange={(e) => setDistancia_km(e.target.value)}
+                      name="distancia_km"
+                      id="distancia_km"
                       type="number"
                     />
                   </div>
 
-                  <div id={styles.item12} className={styles.caixa}>
+                  <div id={styles.item12} className={styles.caixamoeda}>
                     <label htmlFor="moeda">Moeda</label>
                     <select
+                      className={styles.moeda}
                       value={moeda}
                       onChange={(e) => setMoeda(e.target.value)}
                       name="moeda"
@@ -287,9 +293,9 @@ function Solicitacoes() {
                   <div id={styles.item13} className={styles.caixa1}>
                     <label htmlFor="valor_km">Valor/Km</label>
                     <input
-                      value={valorKm}
-                      onChange={(e) => setValorKm(e.target.value)}
-                      name="valorKm"
+                      value={valor_km}
+                      onChange={(e) => setValor_km(e.target.value)}
+                      name="valor_km"
                       type="number"
                     />
                   </div>
@@ -298,9 +304,9 @@ function Solicitacoes() {
                     <label htmlFor="faturado">Val.Faturado</label>
                     <input
                       type="number"
-                      name="valorFaturado"
-                      value={valorFaturado}
-                      onChange={(e) => setValorFaturado(e.target.value)}
+                      name="valor_faturado"
+                      value={valor_faturado}
+                      onChange={(e) => setValor_faturado(e.target.value)}
                     />
                   </div>
 
@@ -315,10 +321,10 @@ function Solicitacoes() {
                     />
                   </div>
 
-                  <div className={styles.btnform}>
-                    <div id={styles.item16} className={styles.quadrado}>
+                  <div>
+                    <div id={styles.item16}>
                       <button
-                        className={styles.salvar}
+                        className={styles.minibutton1}
                         onClick={handleSubmit}
                         type="submit"
                       >
@@ -326,7 +332,7 @@ function Solicitacoes() {
                       </button>
 
                       <button
-                        className={styles.deletar}
+                        className={styles.minibutton1}
                         type="button"
                         onClick={() => {
                           limparCampos();
@@ -347,7 +353,7 @@ function Solicitacoes() {
               <thead>
                 <tr>
                   <th> </th>
-                  <th>Colaborador(a)</th>
+                  <th>colaborador(a)</th>
                   <th>Empresa</th>
                   <th>N° Prest.</th>
                   <th>Data</th>
@@ -365,12 +371,12 @@ function Solicitacoes() {
                 </tr>
               </thead>
               <tbody>
-                {dadosReembolso.map((item, index) => (
+                {dados_reembolso.map((item, index) => (
                   <tr key={index}>
                     <td>
                       <button
                         onClick={() => handleDelete(index)}
-                        className={styles.btnLixeira}
+                        className={styles.minibutton2}
                       >
                         <img
                           className={styles.lixeira}
@@ -381,25 +387,25 @@ function Solicitacoes() {
                     </td>
                     <td>{item.colaborador}</td>
                     <td>{item.empresa}</td>
-                    <td>{item.nPrestacao}</td>
+                    <td>{item.num_prestacao}</td>
                     <td>{item.data}</td>
 
                     <td>
-                      <button>
+                      <button className={styles.minibutton2}>
                         <img src={Motivo} alt="Motivo" />
                       </button>
                     </td>
 
                     {/* <td>{item.descricao}</td> */}
-                    <td>{item.tipoReembolso}</td>
-                    <td>{item.centroCusto}</td>
-                    <td>{item.ordemInterna}</td>
+                    <td>{item.tipo_reembolso}</td>
+                    <td>{item.centro_custo}</td>
+                    <td>{item.ordem_interna}</td>
                     <td>{item.divisao}</td>
                     <td>{item.pep}</td>
                     <td>{item.moeda}</td>
-                    <td>{item.distanciaKm}</td>
-                    <td>{item.valorKm}</td>
-                    <td>{item.valorFaturado}</td>
+                    <td>{item.distancia_km}</td>
+                    <td>{item.valor_km}</td>
+                    <td>{item.valor_faturado}</td>
                     <td>{item.despesa}</td>
                   </tr>
                 ))}
@@ -409,33 +415,31 @@ function Solicitacoes() {
         </main>
 
         <footer className={styles.containerRodape}>
-          <section className={styles.fatura}>
-            <div id={styles.item18}>
+          <div className={styles.fatura}>
+            <section id={styles.item18}>
               <label> Total Faturado </label>
 
               <input
                 type="text"
-                value={dadosReembolso
+                value={dados_reembolso
                   .reduce(
-                    (total, item) => total + Number(item.valorFaturado || 0),
+                    (total, item) => total + Number(item.valor_faturado || 0),
                     0
                   )
                   .toFixed(2)}
               />
-            </div>
-
+            </section>
             <section id={styles.item19}>
               <label> Total Despesa </label>
               <input
                 type="text"
-                value={dadosReembolso
+                value={dados_reembolso
                   .reduce((total, item) => total + Number(item.despesa || 0), 0)
                   .toFixed(2)}
               />
             </section>
-
-            <div>
-              <div id={styles.item20}>
+            <section>
+              <section id={styles.item20}>
                 <button
                   className={styles.buttonAnalise}
                   onClick={enviarParaAnalise}
@@ -451,9 +455,9 @@ function Solicitacoes() {
                   {" "}
                   <img src={Cancelar} alt="" /> Cancelar Solicitação{" "}
                 </button>
-              </div>{" "}
-            </div>
-          </section>{" "}
+              </section>
+            </section>{" "}
+          </div>
         </footer>
       </div>
     </div>
