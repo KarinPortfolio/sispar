@@ -96,10 +96,20 @@ main {
   height: 7vh;
   gap: 0.5em;
 }
+
+.quadrado1 {
+  background-color: #093187;
+  border-radius: 6px;
+  width: 3vw;
+  height: 3vw;
+  font-size: 10px;
+  margin: 1px;
+}
 .quadrado {
   text-align: center;
-  width: 7vw;
-  height: 7vw;
+  width: 3vw;
+  height: 3vw;
+  margin: 1px;
 }
 .buttonAnalise {
   background-color: #093187;

@@ -315,10 +315,10 @@ function Solicitacoes() {
                     />
                   </div>
 
-                  <div className={styles.btnform}>
-                    <div id={styles.item16} className={styles.quadrado}>
+                  <div>
+                    <div id={styles.item16}>
                       <button
-                        className={styles.salvar}
+                        className={styles.quadrado1}
                         onClick={handleSubmit}
                         type="submit"
                       >
@@ -326,7 +326,7 @@ function Solicitacoes() {
                       </button>
 
                       <button
-                        className={styles.deletar}
+                        className={styles.quadrado}
                         type="button"
                         onClick={() => {
                           limparCampos();
