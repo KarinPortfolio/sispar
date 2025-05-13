@@ -35,36 +35,42 @@ function Login() {
       <img src={Capa} alt="foto de um navio cargueiro" />
       <section className={styles.Login}>
         <img src={Logo} alt="Logo da Wilson Sons" />
-        <h1>Boas vindas ao Novo Portal SISPAR</h1>
-        <p>Sistema de emissão de boletos e Parcelamento</p>
-        <form action="">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-          ></input>
-          <a href="#">Esqueci minha senha</a>
-          <div>
-            <button className={styles.btnEntrar} onClick={fazerLogin}>
-              Entrar
-            </button>
+        <h1 id="homeh1">Boas vindas ao Novo Portal SISPAR</h1>
+        <p id="homep">Sistema de emissão de boletos e Parcelamento</p>
+        <div className="styles.ContainerFormulario">
+          <form action="">
+            <label className={styles.ContainerFormulario} htmlFor="email">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+            </label>
+            <label className={styles.ContainerFormulario} htmlFor="senha">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              ></input>
+            </label>
+            <a href="#">Esqueci minha senha</a>
+            <div>
+              <button className={styles.btnEntrar} onClick={fazerLogin}>
+                Entrar
+              </button>
 
-            <button className={styles.btnCriar} onClick={irParaCadastro}>
-              Criar conta
-            </button>
-          </div>
-        </form>
+              <button className={styles.btnCriar} onClick={irParaCadastro}>
+                Criar conta
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
   );

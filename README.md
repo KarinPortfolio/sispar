@@ -20,25 +20,7 @@ Este é o projeto final do curso de fullstack da Escola Vai na Web. Consiste num
 
 - Sistema de emissão de reembolso.
 
-# 2. EndPoints da API:
-
-Documentação dos principais endpoints (incluindo método HTTP, URL, parâmetros, e exemplo de resposta).
-Sistema de Cadastro de Colaboradores:
-| Método | URL | Descrição |
-| ------ | ---------------------------------------------------- | ----------------------------- |
-| POST | /Cadastro | Cadastra colaboradores |
-| GET | /todos-colaboradores | Lista colaboradores |
-| PUT | /atualizar/<int:colaborador_id> | Atualiza o colaborador por id |
-| DELETE | /deletar/<int:colaborador_id>| Remove o colaborador por id |
-| POST | /login | Permite login no sistema |
-
-Sistema de Cadastro de Reembolso:
-| Método | URL | Descrição |
-| ------ | ---------------------------------------------------- | ----------------------------- |
-| POST | /solicitacao | Cadastra solicitação de reembolso |
-| GET | /historico | Lista reembolsos |
-
-# 3. Como rodar o projeto:
+# 2. Como rodar o projeto:
 
 1- Copie o código na máquina local
 
@@ -46,7 +28,7 @@ Sistema de Cadastro de Reembolso:
 `npm install`
 
 3- Ativa o ambiente\
-`npm run dev`\
+`npm run dev`
 
 4- acesse o link pelo navegador para acessar as rotas do Swegger\
  http://localhost:5173/

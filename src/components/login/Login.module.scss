@@ -18,7 +18,7 @@ input {
   color: #44474a;
 }
 
-h1 {
+#homeh1 {
   width: 19vw;
   text-align: center;
   align-items: center;
@@ -28,12 +28,15 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-p {
+#homep {
   font-size: 0.9em;
   font-weight: 700;
   align-items: center;
   justify-content: center;
   color: #0844c4;
+}
+.ContainerFormulario {
+  gap: 2px;
 }
 form {
   margin-top: 1.5rem;
@@ -42,6 +45,7 @@ form {
   justify-content: center;
   align-items: center;
   width: 19vw;
+
   input {
     margin-bottom: 0.5rem;
     border: 0.8px solid #cbd4e1;
@@ -68,33 +72,34 @@ div {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  justify-content: space-around;
+}
 
-  .btnEntrar {
-    width: 6.6vw;
-    height: 6vh;
-    margin: 4px;
-    background-color: #001a3d;
-    font-size: 1em;
-    font-weight: 700;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-  }
-  .btnEntrar:hover {
-    background-color: #033879;
-  }
-  .btnCriar {
-    width: 8vw;
-    height: 6vh;
-    margin: 4px;
-    background-color: #08bedd;
-    font-size: 1em;
-    font-weight: 700;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-  }
-  .btnCriar:hover {
-    background-color: #08acc7;
-  }
+.btnEntrar {
+  width: 6.6vw;
+  height: 6vh;
+  margin: 4px;
+  background-color: #001a3d;
+  font-size: 1em;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+.btnEntrar:hover {
+  background-color: #033879;
+}
+.btnCriar {
+  width: 8vw;
+  height: 6vh;
+  margin: 4px;
+  background-color: #08bedd;
+  font-size: 1em;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+.btnCriar:hover {
+  background-color: #08acc7;
 }
