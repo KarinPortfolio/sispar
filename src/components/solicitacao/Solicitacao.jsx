@@ -15,7 +15,7 @@ function Solicitacoes() {
   const [colaborador, setColaborador] = useState(""); // Estado para o campo colaborador
   const [empresa, setEmpresa] = useState(""); // Estado para o campo empresa
   const [num_prestacao, setNum_prestacao] = useState(""); // Estado para o campo número de prestação
-  const [descricao, setDescricao] = useState(""); // Estado para o campo  descrição
+  const [descricao, setDescricao] = useState(""); // Estado para o campo   descrição
   const [data, setData] = useState(""); // Estado para o campo data
   const [tipo_reembolso, setTipo_reembolso] = useState(""); // Estado para o campo tipo de reembolso
   const [centro_custo, setCentro_custo] = useState(""); // Estado para o campo centro de custo
@@ -30,6 +30,7 @@ function Solicitacoes() {
   const [dados_reembolso, setDados_reembolso] = useState([]);
 
   const [enviado, setEnviado] = useState(false);
+  const idColaboradorFixo = 1; // Defina o ID fixo aqui
 
   useEffect(() => {
     if (enviado) {
@@ -39,8 +40,7 @@ function Solicitacoes() {
   }, [enviado]);
 
   const handleSubmit = () => {
-    const idColaborador = localStorage.getItem("id_colaborador");
-
+    //const idColaborador = localStorage.getItem("id_colaborador");
     const objetoReembolso = {
       empresa,
       colaborador,
@@ -57,7 +57,7 @@ function Solicitacoes() {
       valor_km,
       valor_faturado,
       despesa,
-      id_colaborador: idColaborador,
+      id_colaborador: idColaboradorFixo, // Usando o ID fixo
     };
 
     setDados_reembolso(dados_reembolso.concat(objetoReembolso));
@@ -66,13 +66,13 @@ function Solicitacoes() {
 
   const enviarParaAnalise = async (e) => {
     e.preventDefault();
-    const idColaborador = localStorage.getItem("id_colaborador");
+    //const idColaborador = localStorage.getItem("id_colaborador");
     try {
       const response = await Api.post(
         "/reembolso/solicitacao",
         dados_reembolso.map((item) => ({
           ...item,
-          id_colaborador: idColaborador,
+          id_colaborador: idColaboradorFixo, // Usando o ID fixo
         }))
       );
       console.log("Resposta da API", response);
@@ -154,7 +154,7 @@ function Solicitacoes() {
                     <input
                       value={num_prestacao}
                       onChange={(e) => setNum_prestacao(e.target.value)}
-                      type="number"
+                      type="text"
                       name="num_prestacao"
                     />
                   </div>
@@ -166,6 +166,7 @@ function Solicitacoes() {
                     </label>
                     <textarea
                       name="descricao"
+                      type="text"
                       value={descricao}
                       onChange={(e) => setDescricao(e.target.value)}
                     />
@@ -238,7 +239,7 @@ function Solicitacoes() {
                       name="ordem_interna"
                       onChange={(e) => setOrdem_interna(e.target.value)}
                       id="ordem_interna"
-                      type="number"
+                      type="text"
                     />
                   </div>
 
@@ -249,14 +250,14 @@ function Solicitacoes() {
                       onChange={(e) => setPep(e.target.value)}
                       name="pep"
                       id="pep"
-                      type="number"
+                      type="text"
                     />
                   </div>
 
                   <div className={styles.caixa1}>
                     <label htmlFor="div">Div.</label>
                     <input
-                      type="number"
+                      type="text"
                       id="divisao"
                       onChange={(e) => setDivisao(e.target.value)}
                       name="divisao"
@@ -270,7 +271,7 @@ function Solicitacoes() {
                       onChange={(e) => setDistancia_km(e.target.value)}
                       name="distancia_km"
                       id="distancia_km"
-                      type="number"
+                      type="text"
                     />
                   </div>
 
@@ -296,14 +297,14 @@ function Solicitacoes() {
                       value={valor_km}
                       onChange={(e) => setValor_km(e.target.value)}
                       name="valor_km"
-                      type="number"
+                      type="text"
                     />
                   </div>
 
                   <div id={styles.item14} className={styles.caixa1}>
                     <label htmlFor="faturado">Val.Faturado</label>
                     <input
-                      type="number"
+                      type="text"
                       name="valor_faturado"
                       value={valor_faturado}
                       onChange={(e) => setValor_faturado(e.target.value)}
@@ -313,7 +314,7 @@ function Solicitacoes() {
                   <div id={styles.item15} className={styles.caixa1}>
                     <label htmlFor="despesa">Despesa</label>
                     <input
-                      type="number"
+                      type="text"
                       id="despesa"
                       name="despesa"
                       value={despesa}
