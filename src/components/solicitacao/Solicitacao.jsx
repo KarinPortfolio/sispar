@@ -325,7 +325,7 @@ function Solicitacoes() {
                   <div>
                     <div id={styles.item16}>
                       <button
-                        className={styles.minibutton1}
+                        className={styles.minibutton1a}
                         onClick={handleSubmit}
                         type="submit"
                       >
@@ -333,7 +333,7 @@ function Solicitacoes() {
                       </button>
 
                       <button
-                        className={styles.minibutton1}
+                        className={styles.minibutton1b}
                         type="button"
                         onClick={() => {
                           limparCampos();
